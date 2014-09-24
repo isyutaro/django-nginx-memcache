@@ -22,7 +22,7 @@ def cache_response(request, response,
         pv = ''
     cache_key = get_cache_key(request.get_full_path(), page_version=pv,
                             cookie_name=cookie_name)
-    nginx_cache.set(cache_key, response._get_content(), cache_timeout)
+    nginx_cache.set(cache_key, response.content, cache_timeout)
     # Store the version, if any specified.
     if pv:
         response.set_cookie(cookie_name, pv)
