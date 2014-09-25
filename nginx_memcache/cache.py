@@ -36,6 +36,11 @@ def get_cache_key(request_path, page_version='',
         raw_key = u'%s&%s=%s' % (request_path, cookie_name, page_version)
     else:
         raw_key = u'%s' % request_path
+
+    if settings.DEBUG:
+        print "RAW_PATH: ", raw_key
+        print "MD5_PATH: ", hashlib.md5(raw_key).hexdigest()
+
     return hashlib.md5(raw_key).hexdigest()
 
 
