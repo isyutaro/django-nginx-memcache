@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.cache import get_cache
 
 
+CACHE_ENABLE_COOKIE = getattr(settings, 'CACHE_ENABLE_COOKIE', 'True')
 CACHE_NGINX_DEFAULT_COOKIE = 'pv'
 CACHE_TIME = getattr(settings, 'CACHE_NGINX_TIME', 3600 * 24)
 CACHE_ALIAS = getattr(settings, 'CACHE_NGINX_ALIAS', 'default')
@@ -31,7 +32,10 @@ def cache_response(request, response,
 def get_cache_key(request_path, page_version='',
         cookie_name=CACHE_NGINX_DEFAULT_COOKIE):
     """Use the request path and page version to get cache key."""
-    raw_key = u'%s&%s=%s' % (request_path, cookie_name, page_version)
+    if CACHE_ENABLE_COOKIE:
+        raw_key = u'%s&%s=%s' % (request_path, cookie_name, page_version)
+    else:
+        raw_key = u'%s' % request_path
     return hashlib.md5(raw_key).hexdigest()
 
 
