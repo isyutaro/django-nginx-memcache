@@ -6,12 +6,15 @@ retrieve.
 The cache keys are hashed using an md5 of the the request path *without*
 GET parameters,
 
+Django Version: 1.6
+nginx Version: 1.6 
+
 Installation
 ------------
 
-#. The usual pip or easy_install from `github <https://github.com/pcraciunoiu/django-nginx-memcache>`_::
+#. The usual pip or easy_install from `github <https://github.com/cavernicola/django-nginx-memcache>`_::
 
-    pip install -e git://github.com/pcraciunoiu/django-nginx-memcache#egg=django-nginx-memcache
+    pip install -e git://github.com/cavernicola/django-nginx-memcache#egg=django-nginx-memcache
 
 #. Add ``nginx_memcache`` to your installed apps::
 
@@ -175,6 +178,9 @@ Full List of Settings
 
 ``CACHE_NGINX``
   Set this to False to disable any caching. E.g. for testing, staging...
+
+``CACHE_ENABLE_COOKIE``
+  Set cookie into URL. E.g. home path: '/&pv='
 
 ``CACHE_NGINX_TIME``
   Default cache timeout.
