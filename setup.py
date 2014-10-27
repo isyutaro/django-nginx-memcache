@@ -114,7 +114,7 @@ setup(
     packages=find_packages(),
     package_data=package_data,
     include_package_data=True,
-    install_requires=['Django >= 1.6'],
+    install_requires=['Django>=1.6'],
     classifiers=[
         'Programming Language :: Python',
         'License :: OSI Approved :: MIT License',
