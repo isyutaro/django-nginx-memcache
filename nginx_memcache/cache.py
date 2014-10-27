@@ -9,7 +9,7 @@ CACHE_NGINX_DEFAULT_COOKIE = 'pv'
 CACHE_TIME = getattr(settings, 'CACHE_NGINX_TIME', 3600 * 24)
 CACHE_ALIAS = getattr(settings, 'CACHE_NGINX_ALIAS', 'default')
 nginx_cache = get_cache(CACHE_ALIAS)
-CACHE_HASH_REQUEST = getattr(settings, 'CACHE_NGINX_ALIAS', 'True')
+CACHE_HASH_REQUEST = getattr(settings, 'CACHE_HASH_REQUEST', 'True')
 
 
 def cache_response(request, response,
