@@ -9,6 +9,7 @@ CACHE_NGINX_DEFAULT_COOKIE = 'pv'
 CACHE_TIME = getattr(settings, 'CACHE_NGINX_TIME', 3600 * 24)
 CACHE_ALIAS = getattr(settings, 'CACHE_NGINX_ALIAS', 'default')
 nginx_cache = get_cache(CACHE_ALIAS)
+CACHE_HASH_REQUEST = getattr(settings, 'CACHE_NGINX_ALIAS', 'True')
 
 
 def cache_response(request, response,
@@ -41,7 +42,10 @@ def get_cache_key(request_path, page_version='',
         print "RAW_PATH: ", raw_key
         print "MD5_PATH: ", hashlib.md5(raw_key).hexdigest()
 
-    return hashlib.md5(raw_key).hexdigest()
+    if CACHE_HASH_REQUEST:
+        return hashlib.md5(raw_key).hexdigest()
+    else:
+        return raw_key
 
 
 def invalidate_from_request(request, page_version='',
