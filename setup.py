@@ -103,7 +103,7 @@ package_data = find_package_data(exclude_directories=excluded_directories)
 setup(
     name='Django Memcache for Nginx',
     version=version.replace(' ', '-'),
-    url='http://github.com/pcraciunoiu/django-nginx-memcache',
+    url='http://github.com/cavernicola/django-nginx-memcache',
     author='Paul Craciunoiu',
     author_email='paul@craciunoiu.net',
     description='Decorator for your views to cache their content so it can be '
@@ -114,7 +114,7 @@ setup(
     packages=find_packages(),
     package_data=package_data,
     include_package_data=True,
-    install_requires=['django>=1.0'],
+    install_requires=['Django >= 1.6'],
     classifiers=[
         'Programming Language :: Python',
         'License :: OSI Approved :: MIT License',
